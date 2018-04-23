@@ -1,0 +1,16 @@
+{
+     "name": "swissup/tfa",
+     "description": "Two Factor Authentication Extension for Magento 2",
+     "type": "magento2-module",
+     "version": "0.1.0",
+     "license": "OSL-3.0",
+     "require": {
+          "swissup/core": "*"
+     },
+     "autoload": {
+         "files": [ "registration.php" ],
+         "psr-4": {
+             "Swissup\\Tfa\\": ""
+         }
+     }
+ }
