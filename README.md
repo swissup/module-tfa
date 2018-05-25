@@ -20,7 +20,7 @@ bin/magento module:enable Swissup_Core Swissup_Tfa
 bin/magento setup:upgrade
 ```
 
-g
+
 
 ![2018-05-25 17-15-34](https://user-images.githubusercontent.com/412612/40549149-65439a1a-603f-11e8-950c-106fbf7590b1.png)
 
