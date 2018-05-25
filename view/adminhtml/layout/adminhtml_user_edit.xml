@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="adminhtml.user.edit.tabs">
+            <block class="Swissup\Tfa\Block\Adminhtml\User\Edit\Tab\Tfa" name="tab_swissup_tfa" />
+            <action method="addTabAfter">
+                <argument name="name" xsi:type="string">swissup_tfa</argument>
+                <argument name="block" xsi:type="string">tab_swissup_tfa</argument>
+                <argument name="after" xsi:type="string">roles_section</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

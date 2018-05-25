@@ -5,7 +5,9 @@
      "version": "0.1.0",
      "license": "OSL-3.0",
      "require": {
-          "swissup/core": "*"
+          "swissup/core": "*",
+          "pragmarx/google2fa": "~3.0.0",
+          "bacon/bacon-qr-code":"~1.0.0"
      },
      "autoload": {
          "files": [ "registration.php" ],

@@ -1,0 +1,26 @@
+<?php $label = __('Verification Key'); ?>
+<div class="admin__field field-tfa">
+    <label for="tfa" class="admin__field-label">
+        <span><?= $label ?></span>
+    </label>
+    <div class="admin__field-control">
+        <input id="tfa" class="admin__control-text" type="text" name="tfa[key]" autofocus="" value="" data-validate="{required:false}" autocomplete="off">
+    </div>
+</div>
+<script type="text/javascript">
+    require([
+    "jquery"
+    ], function($) {
+
+        setInterval(function () {
+            var el, second;
+
+            el = $('#tfa').closest('.field-tfa').find('label span').first();
+            second = 30 - Math.floor(new Date().getTime() / 1000.0) % 30;
+            el.text('<?= $label ?> (' + second + ' sec) :');
+            if (30 == second) {
+                $('#tfa').val('');
+            }
+        }, 1000);
+    });
+</script>
