@@ -1,4 +1,4 @@
-# TFA Two Factor Authentication 
+# TFA Two Factor Authentication
 
 Two Factor Authentication Extension for Magento 2
 
@@ -12,8 +12,8 @@ It's extremely important that you keep your server time in sync with some NTP se
 Run the following commands:
 ```bash
 cd <magento_root>
-composer config repositories.swissup composer https://swissup.github.io/packages/
-composer require swissup/tfa:dev-master --prefer-source --ignore-platform-reqs
+composer config repositories.swissup composer https://docs.swissuplabs.com/packages/
+composer require swissup/tfa --prefer-source --ignore-platform-reqs
 bin/magento module:enable Swissup_Core Swissup_Tfa
 bin/magento setup:upgrade
 ```
@@ -53,12 +53,12 @@ To use the two factor authentication, your user will have to install a Google Au
 * [1Password for iOS, Android, OS X, Windows](https://1password.com)
 
 ## Console Commands
-TFA can be disabled using console commands if needed:  
+TFA can be disabled using console commands if needed:
 ##### List TFA status For All Admin Users
 ```bash
 php bin/magento swissup:tfa:list
-```  
+```
 ##### Disable TFA For Single Admin User (by email)
 ```bash
 php bin/magento swissup:tfa:disable admin@example.com
-```  
+```
