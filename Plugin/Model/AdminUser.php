@@ -117,7 +117,5 @@ class AdminUser
         if (isset($data['is_reset']) && $data['is_reset'] == '') {
             $model->delete();
         }
-
-        return;
     }
 }

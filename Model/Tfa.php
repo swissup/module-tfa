@@ -30,7 +30,7 @@ class Tfa extends \Magento\Framework\Model\AbstractModel implements TfaInterface
      */
     protected function _construct()
     {
-        $this->_init('Swissup\Tfa\Model\ResourceModel\Tfa');
+        $this->_init(\Swissup\Tfa\Model\ResourceModel\Tfa::class);
     }
 
     /**
