@@ -7,7 +7,7 @@
      "require": {
           "swissup/module-core": "^1.9.0",
           "pragmarx/google2fa": "~3.0.0",
-          "bacon/bacon-qr-code":"~1.0.0"
+          "bacon/bacon-qr-code":"^1.0.0|^2.0.0"
      },
      "autoload": {
          "files": [ "registration.php" ],
