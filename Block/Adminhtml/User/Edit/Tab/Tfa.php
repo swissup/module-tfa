@@ -1,7 +1,7 @@
 <?php
 namespace Swissup\Tfa\Block\Adminhtml\User\Edit\Tab;
 
-use PragmaRX\Google2FA\Google2FA;
+use PragmaRX\Google2FAQRCode\Google2FA;
 
 class Tfa extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento\Backend\Block\Widget\Tab\TabInterface
 {
@@ -12,7 +12,7 @@ class Tfa extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento
 
      /**
       *
-      * @var \PragmaRX\Google2FA\Google2FA
+      * @var \PragmaRX\Google2FAQRCode\Google2FA
       */
     protected $google2fa;
 
@@ -32,9 +32,9 @@ class Tfa extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento
         Google2FA $google2fa,
         array $data = []
     ) {
+        parent::__construct($context, $registry, $formFactory, $data);
         $this->tfaModelFactory = $tfaModelFactory;
         $this->google2fa = $google2fa;
-        parent::__construct($context, $registry, $formFactory, $data);
     }
 
     /**
@@ -89,7 +89,7 @@ class Tfa extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento
             $secret
         );
 
-        $img = "<img id=\"qr-img\" src=\"$qrImage\" />";
+//        $img = $qrImage;
         $label = "$hostname ({$user->getData('username')})";
         $data['label'] =  $label;
 
@@ -101,7 +101,7 @@ class Tfa extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento
 
         $_label = __('Verification Key');
         $el->setAfterElementHtml(
-            "<br/><img style=\"float:left\" alt=\"$label\" src=\"$qrImage\">
+            "<br/>$qrImage
             <script type=\"text/javascript\">
                 setInterval(function () {
                     var el = $('tfa_key').up('.field').select('label').first();
