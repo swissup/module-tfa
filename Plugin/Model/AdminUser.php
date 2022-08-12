@@ -19,7 +19,7 @@ class AdminUser
 
     /**
      *
-     * @var \Magento\Framework\App\Request\Http
+     * @var \Magento\Framework\App\Request\Http|\Laminas\Http\Request
      */
     protected $request;
 
@@ -55,7 +55,7 @@ class AdminUser
             return $result;
         }
         $model = $this->tfaModelFactory->create();
-        $model->loadByUserId($subject->getUserId());
+        $model->loadByUserId($subject->getData('user_id'));
 
         if ($model->getId() == null) {
             return $result;
@@ -97,7 +97,7 @@ class AdminUser
         }
 
         $model = $this->tfaModelFactory->create();
-        $model->loadByUserId($user->getUserId());
+        $model->loadByUserId($user->getData('user_id'));
 
         $isNew = empty($model->getId());
 

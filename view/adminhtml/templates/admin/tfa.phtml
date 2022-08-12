@@ -7,20 +7,20 @@
         <input id="tfa" class="admin__control-text" type="text" name="tfa[key]" autofocus="" value="" data-validate="{required:false}" autocomplete="off">
     </div>
 </div>
-<script type="text/javascript">
-require([
-'jquery'
-], function($) {
+<script>
+    require([
+    'jquery'
+    ], function($) {
 
-    setInterval(function () {
-        var el, second;
+        setInterval(function () {
+            var el, second;
 
-        el = $('#tfa').closest('.field-tfa').find('label span').first();
-        second = 30 - Math.floor(new Date().getTime() / 1000.0) % 30;
-        el.text('<?= $block->escapeHtml($label) ?> (' + second + ' sec) :');
-        if (30 == second) {
-            $('#tfa').val('');
-        }
-    }, 1000);
-});
+            el = $('#tfa').closest('.field-tfa').find('label span').first();
+            second = 30 - Math.floor(new Date().getTime() / 1000.0) % 30;
+            el.text('<?= $block->escapeHtml($label) ?> (' + second + ' sec) :');
+            if (30 == second) {
+                $('#tfa').val('');
+            }
+        }, 1000);
+    });
 </script>

@@ -18,7 +18,7 @@ class Tfa extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      * Construct
      *
      * @param \Magento\Framework\Model\ResourceModel\Db\Context $context
-     * @par am \Magento\Framework\Stdlib\DateTime\DateTime $coreDate
+     * @param \Magento\Framework\Stdlib\DateTime\DateTime $coreDate
      * @param string|null $connectionName
      */
     public function __construct(
@@ -82,11 +82,11 @@ class Tfa extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     {
         parent::_beforeSave($object);
 
-        if ($object->isObjectNew() && !$object->hasCreated()) {
-            $object->setCreated($this->coreDate->gmtDate());
+        if ($object->isObjectNew() && !$object->hasData('created')) {
+            $object->setData('created', $this->coreDate->gmtDate());
         }
 
-        $object->setUpdated($this->coreDate->gmtDate());
+        $object->setData('updated', $this->coreDate->gmtDate());
 
         return $this;
     }

@@ -80,7 +80,8 @@ class Tfa extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento
         );
         $secret = $isNew ? $this->google2fa->generateSecretKey(32) : $data['secret'];
         $data['secret'] =  $secret;
-        $hostname = parse_url($this->getBaseUrl(), PHP_URL_HOST);
+        $uri = \Laminas\Uri\UriFactory::factory($this->getBaseUrl());
+        $hostname = $uri->getHost();
 
         $qrImage = $this->google2fa->getQRCodeInline(
             $hostname,

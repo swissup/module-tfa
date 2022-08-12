@@ -177,8 +177,25 @@ class Tfa extends \Magento\Framework\Model\AbstractModel implements TfaInterface
      */
     public function loadByUserId($userId)
     {
-        $this->_getResource()->loadByUserId($this, $userId);
+        $this->getResourceModel()->loadByUserId($this, $userId);
         return $this;
+    }
+
+    /**
+     * @return ResourceModel\Tfa
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    private function getResourceModel()
+    {
+         if (empty($this->_resourceName) && empty($this->_resource)) {
+            throw new \Magento\Framework\Exception\LocalizedException(
+                new \Magento\Framework\Phrase('The resource isn\'t set.')
+            );
+        }
+
+        /** @var \Swissup\Tfa\Model\ResourceModel\Tfa  $resource */
+        $resource = $this->_resource ?: \Magento\Framework\App\ObjectManager::getInstance()->get($this->_resourceName);
+        return $resource;
     }
 
     // public function getNewSecret($password)
