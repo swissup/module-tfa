@@ -89,7 +89,6 @@ class Tfa extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento
             $secret
         );
 
-//        $img = $qrImage;
         $label = "$hostname ({$user->getData('username')})";
         $data['label'] =  $label;
 
