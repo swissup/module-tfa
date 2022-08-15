@@ -3,4 +3,7 @@
     <type name="Magento\User\Model\User">
         <plugin name="swissup_tfa_before_save" type="Swissup\Tfa\Plugin\Model\AdminUser" />
     </type>
+    <type name="Swissup\Tfa\Model\Tfa">
+        <plugin name="swissup_tfa_after_before_save" type="Swissup\Tfa\Plugin\Model\Tfa" />
+    </type>
 </config>
