@@ -2,7 +2,7 @@
      "name": "swissup/module-tfa",
      "description": "Two Factor Authentication Extension for Magento 2",
      "type": "magento2-module",
-     "version": "0.2.3",
+     "version": "0.2.4",
      "license": "OSL-3.0",
      "require": {
           "swissup/module-core": "^1.12.11",
