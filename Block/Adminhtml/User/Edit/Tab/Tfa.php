@@ -3,8 +3,18 @@ namespace Swissup\Tfa\Block\Adminhtml\User\Edit\Tab;
 
 use PragmaRX\Google2FAQRCode\Google2FA;
 
-class Tfa extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento\Backend\Block\Widget\Tab\TabInterface
+class Tfa extends \Magento\Backend\Block\Widget\Form implements \Magento\Backend\Block\Widget\Tab\TabInterface
 {
+    /**
+     * @var \Magento\Framework\Registry
+     */
+    private $coreRegistry;
+
+    /**
+     * @var \Magento\Framework\Data\FormFactory
+     */
+    protected $formFactory;
+
     /**
      * @var \Swissup\Tfa\Model\TfaFactory
      */
@@ -32,7 +42,9 @@ class Tfa extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento
         Google2FA $google2fa,
         array $data = []
     ) {
-        parent::__construct($context, $registry, $formFactory, $data);
+        parent::__construct($context, $data);
+        $this->coreRegistry = $registry;
+        $this->formFactory = $formFactory;
         $this->tfaModelFactory = $tfaModelFactory;
         $this->google2fa = $google2fa;
     }
@@ -46,9 +58,9 @@ class Tfa extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento
     protected function _prepareForm()
     {
         /** @var $user \Magento\User\Model\User */
-        $user = $this->_coreRegistry->registry('permissions_user');
+        $user = $this->coreRegistry->registry('permissions_user');
         /** @var \Magento\Framework\Data\Form $form */
-        $form = $this->_formFactory->create();
+        $form = $this->formFactory->create();
         $form->setHtmlIdPrefix('tfa_')
             ->setFieldNameSuffix('tfa');
 
