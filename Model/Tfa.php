@@ -185,7 +185,7 @@ class Tfa extends \Magento\Framework\Model\AbstractModel implements TfaInterface
      * @return ResourceModel\Tfa
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    private function getResourceModel()
+    public function getResourceModel()
     {
          if (empty($this->_resourceName) && empty($this->_resource)) {
             throw new \Magento\Framework\Exception\LocalizedException(
