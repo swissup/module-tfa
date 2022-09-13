@@ -172,7 +172,7 @@ class Tfa extends \Magento\Framework\Model\AbstractModel implements TfaInterface
     /**
      * Load by user id
      *
-     * @param   int user id
+     * @param   int $userId
      * @return  $this
      */
     public function loadByUserId($userId)

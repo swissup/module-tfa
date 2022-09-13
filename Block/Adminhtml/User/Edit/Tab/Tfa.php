@@ -57,7 +57,7 @@ class Tfa extends \Magento\Backend\Block\Widget\Form implements \Magento\Backend
      */
     protected function _prepareForm()
     {
-        /** @var $user \Magento\User\Model\User */
+        /** @var \Magento\User\Model\User $user */
         $user = $this->coreRegistry->registry('permissions_user');
         /** @var \Magento\Framework\Data\Form $form */
         $form = $this->formFactory->create();
@@ -65,7 +65,7 @@ class Tfa extends \Magento\Backend\Block\Widget\Form implements \Magento\Backend
             ->setFieldNameSuffix('tfa');
 
         $tfaModel = $this->tfaModelFactory->create();
-        $tfaModel->loadByUserId($user->getUserId());
+        $tfaModel->loadByUserId($user->getId());
 
         $data = $tfaModel->getData();
         $isNew = $tfaModel->getId() == null;

@@ -55,11 +55,14 @@ class ListCommand extends Command
         $model = $this->tfaModelFactory->create();
         /** @var Collection $collection */
         $collection = $this->userCollectionFactory->create();
+        /** @var \Magento\User\Model\User $user */
         foreach ($collection->getItems() as $user) {
-            $model->loadByUserId($user->getUserId());
+            $model->loadByUserId($user->getId());
             $active = $model->getIsActive() == 1 ?
                 '<bg=green;options=bold>enabled</>' : '<bg=red;options=bold>disabled</>';
             $output->writeln('<info>TFA already ' . $active . ' for '. $user->getEmail() . '</info>');
         }
+
+        return \Magento\Framework\Console\Cli::RETURN_SUCCESS;
     }
 }

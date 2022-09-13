@@ -8,6 +8,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Magento\User\Model\ResourceModel\User\CollectionFactory;
 use Magento\User\Model\ResourceModel\User\Collection;
+use Magento\Framework\Console\Cli;
 
 class DisableCommand extends Command
 {
@@ -66,19 +67,20 @@ class DisableCommand extends Command
         $email = $input->getArgument(self::ADMIN_EMAIL);
         $collection->addFieldToFilter('email', $email);
 
+        /** @var \Magento\User\Model\User $user */
         $user = $collection->getFirstItem();
 
         if (!$user || !$user->getId()) {
             $output->writeln('<error>User ' . $email . ' was not found.</error>');
-            return;
+            return Cli::RETURN_FAILURE;
         }
 
         $model = $this->tfaModelFactory->create();
-        $model->loadByUserId($user->getUserId());
+        $model->loadByUserId($user->getId());
 
         if ($model->getId() && $model->getIsActive() == 0) {
             $output->writeln('<info>TFA already disabled for '. $user->getEmail() . '</info>');
-            return;
+            return Cli::RETURN_SUCCESS;
         }
 
         $model->setIsActive(0);
@@ -88,5 +90,7 @@ class DisableCommand extends Command
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
         }
+
+        return Cli::RETURN_SUCCESS;
     }
 }

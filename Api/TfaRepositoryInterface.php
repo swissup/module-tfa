@@ -58,5 +58,5 @@ interface TfaRepositoryInterface
      * @param int $id The tfa Id
      * @return bool true on success
      */
-    public function deleteById();
+    public function deleteById(int $id);
 }
